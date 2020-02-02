@@ -1,3 +1,10 @@
+# NOTES
+* Installed dependecies to make this work
+  * ngrx/schematics
+  * ngrx/effects
+  * ngrx/store
+  * ngrx/store-devtools
+
 # NgrxDemo
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.24.
