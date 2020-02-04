@@ -1,5 +1,6 @@
 import { createAction, props } from '@ngrx/store';
-import { Todo } from '../reducers/todos.reducer';
+import { Todo } from '../models/todos.model';
+
 
 export const loadTodos = createAction(
   '[TODOS] Load Todos'

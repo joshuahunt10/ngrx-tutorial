@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, concatMap } from 'rxjs/operators';
+import { catchError, map, concatMap, tap } from 'rxjs/operators';
 import { EMPTY, of } from 'rxjs';
 
 import * as TodosActions from '../actions/todos.actions';
+import { TodoService } from '../services/todo.service'
 
 
 
@@ -15,16 +16,16 @@ export class TodosEffects {
 
       ofType(TodosActions.loadTodos),
       concatMap(() =>
-        /** An EMPTY observable only emits completion. Replace with your own observable API request */
-        EMPTY.pipe(
+        this.todoService.getTodos().pipe(
           map(data => TodosActions.loadTodosSuccess({ data })),
           catchError(error => of(TodosActions.loadTodosFailure({ error }))))
       )
     );
   });
 
-
-
-  constructor(private actions$: Actions) {}
+  constructor(
+    private actions$: Actions,
+    private todoService: TodoService
+    ) {}
 
 }

@@ -1,1 +1,8 @@
-<p>todos works!</p>
+<app-todo-list
+  [todoList]="todoList$ | async"
+>
+</app-todo-list>
+<app-add-todo
+  (saveTodo)="onSaveTodo($event)"
+>
+</app-add-todo>

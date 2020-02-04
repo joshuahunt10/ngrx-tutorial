@@ -1,39 +1,36 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import * as TodosActions from '../actions/todos.actions';
+import { Todo } from '../models/todos.model';
 
 export const todosFeatureKey = 'todos';
 
-export interface Todo {
-  text: string,
-  complete: boolean
-}
-
 export interface State {
   allTodos: {
-    [id: string]: Todo
+    [id: number]: Todo
   }
 }
 
 export const initialState: State = {
-  allTodos: {
-    '1': {
-      text: 'Work on demo',
-      complete: false
-    }
-  }
+  allTodos: {}
 };
 
+//update with new http
 const createNewTodoReducer = on(TodosActions.createNewTodo, (state: State, { todo }) => {
-  console.log('state', state);
-  console.log('todo', todo);
+  const newId = Object.keys(state.allTodos).length + 1
+  const newTodos = {...state.allTodos, [newId]: {text: todo.text, complete: todo.complete}}
+  return {allTodos: newTodos}
+})
 
-  const heyo = {...state.allTodos, '2': {text: todo.text, complete: todo.complete}}
-  return {allTodos: heyo}
+const loadTodosReducer = on(TodosActions.loadTodosSuccess, (state: State, { data }) => {
+  const todoMap = data.reduce((acc, todo: Todo) => ({
+    ...acc, [todo.id]: {...todo}
+  }), {})
+  return {allTodos: todoMap}
 })
 
 const todosReducer = createReducer(
   initialState,
-  on(TodosActions.loadTodos, state => state),
+  loadTodosReducer,
   on(TodosActions.loadTodosSuccess, (state, action) => state),
   on(TodosActions.loadTodosFailure, (state, action) => state),
   createNewTodoReducer

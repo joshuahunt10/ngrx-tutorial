@@ -4,6 +4,7 @@
   * ngrx/effects
   * ngrx/store
   * ngrx/store-devtools
+* consider [ducks](https://github.com/michaeljota/ngrx-ducks) for folder structure
 
 # NgrxDemo
 

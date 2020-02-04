@@ -1,0 +1,9 @@
+<ul>
+  <li *ngFor="let todo of todoList">
+    <span
+      [ngStyle]="{'text-decoration': todo.complete ? 'line-through': 'null'}"
+    >
+      {{todo.text}}
+    </span>
+  </li>
+</ul>
