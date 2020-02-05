@@ -8,8 +8,7 @@ import { TodosComponent } from './todos.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { AddTodoComponent } from './components/new-todo/new-todo.component'
 import { ReactiveFormsModule } from '@angular/forms';
-
-
+import { TodosRoutingModule } from './todos-routing.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
+    TodosRoutingModule,
     ReactiveFormsModule,
     StoreModule.forFeature(fromTodos.todosFeatureKey, fromTodos.reducer),
     EffectsModule.forFeature([TodosEffects])

@@ -13,7 +13,6 @@ import { AppComponent } from './app.component';
 import { AppEffects } from './app.effects';
 import { reducers, metaReducers } from './reducers';
 import { environment } from '../environments/environment';
-import { TodosModule } from './todos/todos.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +31,6 @@ import { TodosModule } from './todos/todos.module';
     EffectsModule.forRoot([AppEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    TodosModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
