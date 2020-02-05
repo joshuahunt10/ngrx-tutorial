@@ -16,7 +16,22 @@ export const loadTodosFailure = createAction(
   props<{ error: any }>()
 );
 
-export const createNewTodo = createAction(
-  '[TODOS] Create New Todo',
+// export const createNewTodo = createAction(
+//   '[TODOS] Create New Todo',
+//   props<{todo: Todo}>()
+// );
+
+export const createNewTodoRequest = createAction(
+  '[TODOS] Create Todo Request',
+  props<{ todo: Todo }>()
+);
+
+export const createNewTodoSuccess = createAction(
+  '[TODOS] Create Todo Success',
   props<{todo: Todo}>()
+);
+
+export const createNewTodoFailure = createAction(
+  '[TODOS] Create Todo Failure',
+  props<{ error: any }>()
 );

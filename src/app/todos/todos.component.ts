@@ -21,21 +21,12 @@ export class TodosComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // this.store.dispatch(TodoAction.createNewTodo({todo: {
-    //   id: 3,
-    //   text: 'Add a template',
-    //   complete: true
-    // }}))
-    // this.todoList$ = this.store.pipe(
-    //   select(fromSelectors.selectAllTodos),
-    //   map(todosMap => Object.values(todosMap)),
-    //   tap(console.log)
-    // );
     this.store.dispatch(TodoAction.loadTodos())
   }
 
   onSaveTodo(todoText: string) {
-    console.log('todo saved', todoText)
+    const newTodo: Todo = {text: todoText, complete: false}
+    this.store.dispatch(TodoAction.createNewTodoRequest({ todo: newTodo }))
   }
 
 }

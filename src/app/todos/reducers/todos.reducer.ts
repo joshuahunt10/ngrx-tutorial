@@ -14,11 +14,17 @@ export const initialState: State = {
   allTodos: {}
 };
 
-//update with new http
-const createNewTodoReducer = on(TodosActions.createNewTodo, (state: State, { todo }) => {
+const createNewTodoReducer = on(TodosActions.createNewTodoSuccess, (state: State, { todo }) => {
   const newId = Object.keys(state.allTodos).length + 1
-  const newTodos = {...state.allTodos, [newId]: {text: todo.text, complete: todo.complete}}
-  return {allTodos: newTodos}
+  const newTodos = {
+    ...state.allTodos,
+    [newId]: {
+      id: newId,
+      text: todo.text,
+      complete: todo.complete
+    }
+  }
+  return { allTodos: newTodos }
 })
 
 const loadTodosReducer = on(TodosActions.loadTodosSuccess, (state: State, { data }) => {
