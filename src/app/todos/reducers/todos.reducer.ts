@@ -8,10 +8,18 @@ export interface State {
   allTodos: {
     [id: number]: Todo
   }
+  ui: {
+    loading: string[]
+    error: string[]
+  }
 }
 
 export const initialState: State = {
-  allTodos: {}
+  allTodos: {},
+  ui: {
+    loading: [],
+    error: []
+  }
 };
 
 const createNewTodoReducer = on(TodosActions.createNewTodoSuccess, (state: State, { todo }) => {

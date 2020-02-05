@@ -10,7 +10,7 @@ import { TodoService } from '../services/todo.service'
 export class TodosEffects {
   loadTodos$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(TodosActions.loadTodos),
+      ofType(TodosActions.loadTodosRequest),
       concatMap(() =>
         this.todoService.getTodos().pipe(
           map(data => TodosActions.loadTodosSuccess({ data })),

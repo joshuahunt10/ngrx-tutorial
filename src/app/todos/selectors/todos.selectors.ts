@@ -6,13 +6,18 @@ export const selectTodosState = createFeatureSelector<fromTodos.State>(
   fromTodos.todosFeatureKey
 );
 
-export const selectAllTodos = createSelector(
+export const selectAllTodosMap = createSelector(
   selectTodosState,
   (todosState: fromTodos.State) => todosState.allTodos
 )
 
 export const selectTodoById = createSelector(
-  selectAllTodos,
+  selectAllTodosMap,
   (allTodos: TodoMap, props) => allTodos[props.id]
+)
+
+export const selectAllTodosList = createSelector(
+  selectAllTodosMap,
+  (allTodos: TodoMap) => Object.values(allTodos)
 )
 

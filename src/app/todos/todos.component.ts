@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { tap, map } from 'rxjs/operators';
 
 import * as TodoAction from './actions/todos.actions';
 import * as fromReducer from './reducers/todos.reducer';
@@ -21,12 +20,12 @@ export class TodosComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.store.dispatch(TodoAction.loadTodos())
+    this.store.dispatch(TodoAction.loadTodosRequest())
+    this.todoList$ = this.store.pipe(select(fromSelectors.selectAllTodosList))
   }
 
   onSaveTodo(todoText: string) {
     const newTodo: Todo = {text: todoText, complete: false}
     this.store.dispatch(TodoAction.createNewTodoRequest({ todo: newTodo }))
   }
-
 }

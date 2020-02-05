@@ -2,8 +2,8 @@ import { createAction, props } from '@ngrx/store';
 import { Todo } from '../models/todos.model';
 
 
-export const loadTodos = createAction(
-  '[TODOS] Load Todos'
+export const loadTodosRequest = createAction(
+  '[TODOS] Load Todos Request'
 );
 
 export const loadTodosSuccess = createAction(
@@ -15,11 +15,6 @@ export const loadTodosFailure = createAction(
   '[TODOS] Load Todos Failure',
   props<{ error: any }>()
 );
-
-// export const createNewTodo = createAction(
-//   '[TODOS] Create New Todo',
-//   props<{todo: Todo}>()
-// );
 
 export const createNewTodoRequest = createAction(
   '[TODOS] Create Todo Request',
