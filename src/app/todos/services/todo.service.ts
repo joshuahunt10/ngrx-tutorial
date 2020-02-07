@@ -7,7 +7,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class TodoService {
-
   private todosUrl = 'api/todos'
 
   httpOptions = {

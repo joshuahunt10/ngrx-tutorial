@@ -32,14 +32,14 @@ const createNewTodoReducer = on(TodosActions.createNewTodoSuccess, (state: State
       complete: todo.complete
     }
   }
-  return { allTodos: newTodos }
+  return { ...state, allTodos: newTodos }
 })
 
 const loadTodosReducer = on(TodosActions.loadTodosSuccess, (state: State, { data }) => {
   const todoMap = data.reduce((acc, todo: Todo) => ({
-    ...acc, [todo.id]: {...todo}
+    ...acc, [todo.id]: { ...todo }
   }), {})
-  return {allTodos: todoMap}
+  return {...state, allTodos: todoMap}
 })
 
 const todosReducer = createReducer(

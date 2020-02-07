@@ -6,13 +6,14 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './todos/services/in-memory-data.service'
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppEffects } from './app.effects';
 import { reducers, metaReducers } from './reducers';
 import { environment } from '../environments/environment';
+import { InMemoryDataService } from './in-memory-data.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { environment } from '../environments/environment';
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
+      InMemoryDataService, { dataEncapsulation: false, delay: 2000 }
     )
   ],
   providers: [],
