@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
-import { catchError, map, concatMap, tap } from 'rxjs/operators';
+import { catchError, map, concatMap, } from 'rxjs/operators';
 
 import * as TodosActions from '../actions/todos.actions';
 import { TodoService } from '../services/todo.service'
@@ -33,5 +33,4 @@ export class TodosEffects {
     private actions$: Actions,
     private todoService: TodoService
     ) {}
-
 }

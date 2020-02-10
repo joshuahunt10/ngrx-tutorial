@@ -1,4 +1,5 @@
 import { Action, createReducer, on } from '@ngrx/store';
+
 import * as TodosActions from '../actions/todos.actions';
 import { Todo } from '../models/todos.model';
 
@@ -8,18 +9,10 @@ export interface State {
   allTodos: {
     [id: number]: Todo
   }
-  ui: {
-    loading: string[]
-    error: string[]
-  }
 }
 
 export const initialState: State = {
-  allTodos: {},
-  ui: {
-    loading: [],
-    error: []
-  }
+  allTodos: {}
 };
 
 const createNewTodoReducer = on(TodosActions.createNewTodoSuccess, (state: State, { todo }) => {

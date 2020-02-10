@@ -2,4 +2,6 @@
   [contactsList]="contactsList$ | async"
 >
 </app-contact-list>
-<app-create-contact></app-create-contact>
+<app-create-contact
+  (saveContact)="onContactSave($event)"
+></app-create-contact>

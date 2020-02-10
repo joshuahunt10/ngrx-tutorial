@@ -1,5 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 
+import { Contact } from '../models/phone-book.model';
+
 export const loadContactsRequest = createAction(
   '[PHONE] Load Contacts Request'
 );
@@ -16,12 +18,12 @@ export const loadContactsFailure = createAction(
 
 export const createContactRequest = createAction(
   '[PHONE] Create Contact Request',
-  props<{contact: any}>()
+  props<{contact: Contact}>()
 );
 
 export const createContactSuccess = createAction(
   '[PHONE] Create Contact Success',
-  props<{contact: any}>()
+  props<{contact: Contact}>()
 );
 
 export const createContactFailure = createAction(

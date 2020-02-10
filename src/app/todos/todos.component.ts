@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import * as TodoAction from './actions/todos.actions';
+import * as fromActions from './actions/todos.actions';
 import * as fromReducer from './reducers/todos.reducer';
 import * as fromSelectors from './selectors/todos.selectors';
 import { Todo } from './models/todos.model';
@@ -20,12 +20,12 @@ export class TodosComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.store.dispatch(TodoAction.loadTodosRequest())
+    this.store.dispatch(fromActions.loadTodosRequest())
     this.todoList$ = this.store.pipe(select(fromSelectors.selectAllTodosList))
   }
 
   onSaveTodo(todoText: string) {
     const newTodo: Todo = {text: todoText, complete: false}
-    this.store.dispatch(TodoAction.createNewTodoRequest({ todo: newTodo }))
+    this.store.dispatch(fromActions.createNewTodoRequest({ todo: newTodo }))
   }
 }

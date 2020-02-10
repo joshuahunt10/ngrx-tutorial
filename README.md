@@ -5,6 +5,7 @@
   * ngrx/store
   * ngrx/store-devtools
 * consider [ducks](https://github.com/michaeljota/ngrx-ducks) for folder structure
+* Thought about trying to destroy instances of lazy loaded modules, but according to [this](https://stackoverflow.com/questions/52067801/act-when-lazy-loaded-module-is-destroyed) stack overflow post, it doesn't save much memory and actually doesn't work in Angular 6+.
 
 # NgrxDemo
 

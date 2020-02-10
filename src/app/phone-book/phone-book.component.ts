@@ -26,4 +26,7 @@ export class PhoneBookComponent implements OnInit {
     )
   }
 
+  onContactSave(contact: Contact) {
+    this.store.dispatch(fromActions.createContactRequest({ contact }))
+  }
 }

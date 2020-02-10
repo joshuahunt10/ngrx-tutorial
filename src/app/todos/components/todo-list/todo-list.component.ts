@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+
 import { Todo } from '../../models/todos.model';
 
 @Component({

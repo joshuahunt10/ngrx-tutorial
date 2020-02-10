@@ -1,6 +1,7 @@
+import { on, createReducer, Action } from '@ngrx/store';
+
 import { Contact } from '../models/phone-book.model';
 import * as PhoneBookActions from '../actions/phone-book.actions';
-import { on, createReducer, Action } from '@ngrx/store';
 
 export const phoneBookFeatureKey = 'phonebook';
 
@@ -21,9 +22,23 @@ const loadContactsReducer = on(PhoneBookActions.loadContactsSuccess, (state: Sta
   return { ...state, allContacts: contactMap }
 })
 
+const createNewContactReducer = on(PhoneBookActions.createContactSuccess, (state: State, { contact }) => {
+  console.log('contact', contact)
+  const newId = Object.keys(state.allContacts).length + 1;
+  const newContacts = {
+    ...state.allContacts,
+    [newId]: {
+      id: newId,
+      ...contact
+    }
+  }
+  return {...state, allContacts: newContacts}
+})
+
 const phoneBookReducer = createReducer(
   initialState,
-  loadContactsReducer
+  loadContactsReducer,
+  createNewContactReducer
 );
 
 export function reducer(state: State | undefined, action: Action) {

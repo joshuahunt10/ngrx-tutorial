@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+
 import { Contact } from '../models/phone-book.model';
 
 @Injectable({
@@ -18,5 +19,9 @@ export class PhoneBookService {
 
   getContacts(): Observable<Contact[]> {
     return this.http.get<Contact[]>(this.phoneBookUrl)
+  }
+
+  addContact(contact: Contact): Observable<Contact> {
+    return this.http.post<Contact>(this.phoneBookUrl, contact, this.httpOptions)
   }
 }

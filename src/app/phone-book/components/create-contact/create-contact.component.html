@@ -1,1 +1,20 @@
-<p>create-contact works!</p>
+<div>
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <label>
+      First Name:
+      <input type="text" formControlName="firstName" required>
+    </label>
+
+    <label>
+      Last Name:
+      <input type="text" formControlName="lastName">
+    </label>
+
+    <label>
+      Phone Number:
+      <input type="text" formControlName="number" required>
+    </label>
+
+    <button type="submit">Add Contact</button>
+  </form>
+</div>
